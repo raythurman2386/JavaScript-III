@@ -15,15 +15,41 @@
 // Principle 1
 
 // code example for Window Binding
+console.log(this);
 
 // Principle 2
 
 // code example for Implicit Binding
-
+const myObj = {
+    greeting: 'Hello',
+    speak: function () {
+        return `${this.greeting}, world!`
+    }
+}
+myObj.speak();
 // Principle 3
 
 // code example for New Binding
+function Animal(obj) {
+    this.name = obj.name;
+    this.age = obj.age;
+    this.speak = function () {
+        return `random ${this.name} animal noises`
+    }
+}
+const lion = new Animal({
+    name: 'Lion',
+    age: '4catyears'
+});
+const duck = new Animal({
+    name: 'Duck',
+    age: '2duckyears'
+});
+lion.speak();
+duck.speak();
 
 // Principle 4
 
 // code example for Explicit Binding
+lion.speak.call(duck);
+duck.speak.apply(lion);
