@@ -26,7 +26,7 @@ const myObj = {
         return `${this.greeting}, world!`
     }
 }
-myObj.speak();
+console.log(myObj.speak());
 // Principle 3
 
 // code example for New Binding
@@ -45,8 +45,8 @@ const duck = new Animal({
     name: 'Duck',
     age: '2duckyears'
 });
-lion.speak();
-duck.speak();
+console.log(lion.speak());
+console.log(duck.speak());
 
 // Principle 4
 
