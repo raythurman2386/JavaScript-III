@@ -47,19 +47,27 @@ Humanoid.prototype.greet = function () {
 
 function Hero(heroAttr) {
   Humanoid.call(this, heroAttr);
-  this.damage = heroAttr.damage;
+  this.armor = heroAttr.armor;
 }
 
 Hero.prototype = Object.create(Humanoid.prototype);
 
-/*      Villian     */
-
-function Villain(villianAttr) {
-  Humanoid.call(this, villianAttr);
-  this.damage = villianAttr.damage;
+Hero.prototype.dealDamage = function (target) {
+  return `${target.name} took damage.`;
 }
 
-Villian.prototype = Object.create(Humanoid.prototype);
+/*      Villain     */
+
+function Villain(villainAttr) {
+  Humanoid.call(this, villainAttr);
+  this.magic = villainAttr.magic;
+}
+
+Villain.prototype = Object.create(Humanoid.prototype);
+
+Villain.prototype.dealDamage = function (target) {
+  return `${target.name} took damage.`;
+}
 
 /*
  * Inheritance chain: GameObject -> CharacterStats -> Humanoid
@@ -120,6 +128,42 @@ const archer = new Humanoid({
   language: 'Elvish',
 });
 
+const mainHero = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 3,
+    height: 4,
+  },
+  healthPoints: 20,
+  name: 'Thor',
+  team: 'Odin',
+  weapons: [
+    'StormBreaker',
+    'Lightning',
+  ],
+  language: 'God',
+  armor: 5,
+});
+
+const mainVillain = new Villain({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 3,
+    height: 4,
+  },
+  healthPoints: 20,
+  name: 'Loki',
+  team: 'Odin',
+  weapons: [
+    'Dagger',
+    'Magic',
+  ],
+  language: 'God',
+  magic: 15,
+});
+
 console.log(mage.createdAt); // Today's date
 console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
 console.log(swordsman.healthPoints); // 15
@@ -130,6 +174,11 @@ console.log(archer.language); // Elvish
 console.log(archer.greet()); // Lilith offers a greeting in Elvish.
 console.log(mage.takeDamage()); // Bruce took damage.
 console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+console.log(mainHero);
+console.log(mainHero.dealDamage(archer));
+console.log(mainVillain);
+console.log(mainHero.name);
+console.log(mainVillain.name);
 
 
 // Stretch task: 
