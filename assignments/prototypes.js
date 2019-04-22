@@ -26,8 +26,13 @@ function CharacterStats(charAttr) {
 
 CharacterStats.prototype = Object.create(GameObject.prototype);
 
-CharacterStats.prototype.takeDamage = function () {
-  return `${this.name} took damage.`;
+CharacterStats.prototype.takeDamage = function (i) {
+  if (this.healthPoints > 0) {
+    this.healthPoints = this.healthPoints - i;
+    return `${this.name} took ${i} damage.`;
+  } else if (this.healthPoints <= 0) {
+    return this.destroy();
+  }
 }
 /*      Humans      */
 function Humanoid(humanAttr) {
@@ -53,7 +58,8 @@ function Hero(heroAttr) {
 Hero.prototype = Object.create(Humanoid.prototype);
 
 Hero.prototype.dealDamage = function (target) {
-  return `${target.name} took damage.`;
+  let i = Math.floor(Math.random() * 3);
+  return target.takeDamage(i);
 }
 
 /*      Villain     */
@@ -66,7 +72,8 @@ function Villain(villainAttr) {
 Villain.prototype = Object.create(Humanoid.prototype);
 
 Villain.prototype.dealDamage = function (target) {
-  return `${target.name} took damage.`;
+  let i = Math.floor(Math.random() * 3);
+  return target.takeDamage(i);
 }
 
 /*
