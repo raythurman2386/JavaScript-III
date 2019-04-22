@@ -179,10 +179,10 @@ console.log(swordsman.team); // The Round Table
 console.log(mage.weapons); // Staff of Shamalama
 console.log(archer.language); // Elvish
 console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-console.log(mage.takeDamage()); // Bruce took damage.
+console.log(mage.takeDamage(1)); // Bruce took damage.
 console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 console.log(mainHero);
-console.log(mainHero.dealDamage(archer));
+console.log(mainHero.dealDamage(mainVillain));
 console.log(mainVillain);
 console.log(mainHero.name);
 console.log(mainVillain.name);
