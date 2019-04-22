@@ -65,16 +65,12 @@ Hero.prototype.dealDamage = function (target) {
 /*      Villain     */
 
 function Villain(villainAttr) {
-  Humanoid.call(this, villainAttr);
+  Hero.call(this, villainAttr);
   this.magic = villainAttr.magic;
 }
 
-Villain.prototype = Object.create(Humanoid.prototype);
+Villain.prototype = Object.create(Hero.prototype);
 
-Villain.prototype.dealDamage = function (target) {
-  let i = Math.floor(Math.random() * 3);
-  return target.takeDamage(i);
-}
 
 /*
  * Inheritance chain: GameObject -> CharacterStats -> Humanoid
@@ -168,6 +164,7 @@ const mainVillain = new Villain({
     'Magic',
   ],
   language: 'God',
+  armor: 3,
   magic: 15,
 });
 
