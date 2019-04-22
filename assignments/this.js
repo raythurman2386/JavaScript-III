@@ -33,17 +33,20 @@ console.log(myObj.speak());
 function Animal(obj) {
     this.name = obj.name;
     this.age = obj.age;
+    this.sound = obj.sound;
     this.speak = function () {
-        return `random ${this.name} animal noises`
+        return `${this.name} ${this.sound}`;
     }
 }
 const lion = new Animal({
     name: 'Lion',
-    age: '4catyears'
+    age: '4catyears',
+    sound: 'Roar',
 });
 const duck = new Animal({
     name: 'Duck',
-    age: '2duckyears'
+    age: '2duckyears',
+    sound: 'Quack',
 });
 console.log(lion.speak());
 console.log(duck.speak());
