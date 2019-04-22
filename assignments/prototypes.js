@@ -27,8 +27,8 @@ function CharacterStats(charAttr) {
 CharacterStats.prototype = Object.create(GameObject.prototype);
 
 CharacterStats.prototype.takeDamage = function (i) {
+  this.healthPoints = this.healthPoints - i;
   if (this.healthPoints > 0) {
-    this.healthPoints = this.healthPoints - i;
     return `${this.name} took ${i} damage.\nHealth Points: ${this.healthPoints}`;
   } else if (this.healthPoints <= 0) {
     return this.destroy();
